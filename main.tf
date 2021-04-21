@@ -7,3 +7,12 @@ module "network" {
     public_subnet1_cidr  = var.public_subnet1_cidr
     tags                 = var.tags
 }
+
+module "ec2" {
+    source = "./src/modules/ec2"
+
+    ami_id             = var.ami_id
+    instance_type      = var.instance_type    
+    vpc_id             = module.network.vpc_id
+    private_subnet1_id = module.network.private_subnet1_id
+}

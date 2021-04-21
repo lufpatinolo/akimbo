@@ -16,3 +16,11 @@ variable "region" {
 
 variable "tags" {
 }
+
+
+#EC2
+variable "ami_id" {
+}
+
+variable "instance_type" {
+}
