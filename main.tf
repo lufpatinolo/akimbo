@@ -16,3 +16,7 @@ module "ec2" {
     vpc_id             = module.network.vpc_id
     private_subnet1_id = module.network.private_subnet1_id
 }
+
+module "iam" {
+    source = "./src/modules/iam"   
+}

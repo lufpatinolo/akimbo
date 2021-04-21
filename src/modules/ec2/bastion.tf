@@ -5,6 +5,7 @@ data "aws_subnet" "private_subnet1" {
 resource "aws_instance" "bastion" {
     ami                         = var.ami_id
     instance_type               = var.instance_type
+    iam_instance_profile        = "ec2-ssm-profile"
     subnet_id                   = data.aws_subnet.private_subnet1.id
     vpc_security_group_ids      = [
        aws_security_group.bastion-sg-1.id 
@@ -14,5 +15,4 @@ resource "aws_instance" "bastion" {
     tags = {
       "Name" = "Bastion"
     }
-
 }
