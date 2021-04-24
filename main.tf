@@ -15,6 +15,7 @@ module "ec2" {
     instance_type      = var.instance_type    
     vpc_id             = module.network.vpc_id
     public_subnet1_id  = module.network.public_subnet1_id
+    public_subnet2_id  = module.network.public_subnet2_id
 }
 
 module "iam" {

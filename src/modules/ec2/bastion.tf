@@ -8,7 +8,7 @@ resource "aws_instance" "bastion" {
     iam_instance_profile        = "ec2-ssm-profile"
     subnet_id                   = data.aws_subnet.public_subnet1.id
     vpc_security_group_ids      = [
-       aws_security_group.bastion-sg-1.id 
+       aws_security_group.bastion-sg-1.id
     ]
     #key_name                    = "bastion-key"
     associate_public_ip_address = true

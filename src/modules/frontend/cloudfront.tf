@@ -1,7 +1,7 @@
 locals {
   s3_origin_id = "s3-fbd-Origin"
 }
-resource "aws_cloudfront_origin_access_identity" "s3_fbv_origin_access_identity" {
+resource "aws_cloudfront_origin_access_identity" "s3_fbd_origin_access_identity" {
   comment = "access-identity-fbd"
 }
 
@@ -11,7 +11,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
     origin_id   = local.s3_origin_id
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.s3_fbv_origin_access_identity.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.s3_fbd_origin_access_identity.cloudfront_access_identity_path
     }
   }
 
