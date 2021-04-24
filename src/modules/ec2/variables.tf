@@ -9,7 +9,7 @@ variable "vpc_id" {
   description = "ID of VPC"
 }
 
-variable "private_subnet1_id" {
+variable "public_subnet1_id" {
   type = string
-  description = "ID of private subnet 1"
+  description = "ID of public subnet 1"
 }
