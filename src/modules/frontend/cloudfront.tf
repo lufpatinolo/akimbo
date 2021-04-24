@@ -2,7 +2,7 @@ locals {
   s3_origin_id = "s3-fbd-Origin"
 }
 resource "aws_cloudfront_origin_access_identity" "s3_fbv_origin_access_identity" {
-  comment = "fbv"
+  comment = "access-identity-fbd"
 }
 
 resource "aws_cloudfront_distribution" "frontend_distribution" {
@@ -51,7 +51,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
   
 
   tags = {
-    Name = "FBV"
+    Name = "FBD"
   }
 
   viewer_certificate {
