@@ -10,7 +10,6 @@ resource "aws_instance" "bastion" {
     vpc_security_group_ids      = [
        aws_security_group.bastion-sg-1.id
     ]
-    #key_name                    = "bastion-key"
     associate_public_ip_address = true
     tags = {
       "Name" = "Bastion"

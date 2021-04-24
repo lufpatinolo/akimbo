@@ -25,3 +25,9 @@ module "iam" {
 module "frontend" {
     source = "./src/modules/frontend"   
 }
+
+module "ecs" {
+    source = "./src/modules/ecs"   
+    ecs_task_role           = module.iam.ecs_task_role
+    ecs_task_execution_role = module.iam.ecs_task_execution_role
+}
