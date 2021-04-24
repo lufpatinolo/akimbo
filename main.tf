@@ -20,3 +20,7 @@ module "ec2" {
 module "iam" {
     source = "./src/modules/iam"   
 }
+
+module "frontend" {
+    source = "./src/modules/frontend"   
+}
