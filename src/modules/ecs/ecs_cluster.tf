@@ -41,7 +41,9 @@ resource "aws_ecs_task_definition" "fbd_task_definition" {
       ]
     }
   ])
-
+  lifecycle {
+    ignore_changes = all
+  }
 }
 
 resource "aws_ecs_service" "calc" {
@@ -64,6 +66,10 @@ resource "aws_ecs_service" "calc" {
     container_name   = "first"
     container_port   = 80
   }
-
-
+  lifecycle {
+    ignore_changes = [
+      task_definition,
+      desired_count
+    ]
+  }
 }
