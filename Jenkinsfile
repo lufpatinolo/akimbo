@@ -40,7 +40,7 @@ pipeline {
         
         stage('Terraform Apply') {
             steps {
-                sh 'echo OK'
+                sh 'terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve'
             }
         }
     }
