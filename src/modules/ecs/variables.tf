@@ -27,3 +27,9 @@ variable "ecs_fargate_sg" {
   description = "ID of sg"
   default = ""
 }
+
+variable "fbd_ecs_target_arn" {
+  type = string
+  description = "arn target ecs"
+  default = ""
+}

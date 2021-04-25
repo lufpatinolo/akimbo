@@ -10,6 +10,10 @@ data "aws_security_group" "ecs_fargate_sg" {
   id = var.ecs_fargate_sg
 }
 
+data "aws_alb_target_group" "fbd_ecs_target_arn" {
+  arn = var.fbd_ecs_target_arn
+}
+
 resource "aws_ecs_cluster" "fbd-cluster" {
   name = "fbd-cluster"
 }
@@ -37,15 +41,13 @@ resource "aws_ecs_task_definition" "fbd_task_definition" {
       ]
     }
   ])
-  lifecycle {
-    ignore_changes = all
-  }
+
 }
 
 resource "aws_ecs_service" "calc" {
   name                               = "calc"
   task_definition                    = aws_ecs_task_definition.fbd_task_definition.arn
-  desired_count                      = 1
+  desired_count                      = 2
   launch_type                        = "FARGATE"
   cluster                            = aws_ecs_cluster.fbd-cluster.id
   platform_version                   = "LATEST"
@@ -57,10 +59,11 @@ resource "aws_ecs_service" "calc" {
     security_groups  = [data.aws_security_group.ecs_fargate_sg.id]
     subnets          = [data.aws_subnet.public_subnet1.id,data.aws_subnet.public_subnet2.id]
   }
-  lifecycle {
-    ignore_changes = [
-      task_definition,
-      desired_count
-    ]
+  load_balancer {
+    target_group_arn = data.aws_alb_target_group.fbd_ecs_target_arn.arn
+    container_name   = "first"
+    container_port   = 80
   }
+
+
 }

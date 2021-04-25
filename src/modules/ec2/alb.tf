@@ -18,3 +18,23 @@ resource "aws_lb" "fbd-alb" {
     Name = "alb-fbd"
   }
 }
+
+resource "aws_alb_target_group" "fbd_ecs_target" {
+  name        = "fbd-ecs-target"
+  port        = 80  
+  protocol    = "HTTP"
+  target_type = "ip"
+  vpc_id      = data.aws_vpc.vpc_main.id
+}
+
+resource "aws_alb_listener" "fbd_alb_listener" {
+  load_balancer_arn = aws_lb.fbd-alb.arn
+  port = 80
+  
+  protocol = "HTTP"
+  default_action {
+    target_group_arn = aws_alb_target_group.fbd_ecs_target.arn
+    type = "forward"
+
+  }
+}

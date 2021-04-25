@@ -33,4 +33,5 @@ module "ecs" {
     public_subnet1_id       = module.network.public_subnet1_id
     public_subnet2_id       = module.network.public_subnet2_id
     ecs_fargate_sg          = module.ec2.ecs_fargate_sg
+    fbd_ecs_target_arn      = module.ec2.fbd_ecs_target_arn
 }
