@@ -47,7 +47,7 @@ resource "aws_ecs_task_definition" "fbd_task_definition" {
 resource "aws_ecs_service" "calc" {
   name                               = "calc"
   task_definition                    = aws_ecs_task_definition.fbd_task_definition.arn
-  desired_count                      = 2
+  desired_count                      = 1
   launch_type                        = "FARGATE"
   cluster                            = aws_ecs_cluster.fbd-cluster.id
   platform_version                   = "LATEST"
