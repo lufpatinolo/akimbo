@@ -40,7 +40,7 @@ pipeline {
         
         stage('Terraform Apply') {
             steps {
-                sh 'echo OK'
+                sh 'echo OK OK'
             }
         }
     }
