@@ -48,3 +48,9 @@ variable "public_subnet2_id" {
   description = "ID of public subnet 2"
   default = ""
 }
+
+variable "ecs_fargate_sg" {
+  type = string
+  description = "ID of public subnet 2"
+  default = ""
+}
