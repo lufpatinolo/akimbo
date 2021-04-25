@@ -37,6 +37,9 @@ resource "aws_ecs_task_definition" "fbd_task_definition" {
       ]
     }
   ])
+  lifecycle {
+    ignore_changes = all
+  }
 }
 
 resource "aws_ecs_service" "calc" {
@@ -47,12 +50,17 @@ resource "aws_ecs_service" "calc" {
   cluster                            = aws_ecs_cluster.fbd-cluster.id
   platform_version                   = "LATEST"
   deployment_maximum_percent         = 200
-  #iam_role                           = var.ecs_task_role
   deployment_minimum_healthy_percent = 100
   scheduling_strategy                = "REPLICA"
   network_configuration {
     assign_public_ip = true
     security_groups  = [data.aws_security_group.ecs_fargate_sg.id]
     subnets          = [data.aws_subnet.public_subnet1.id,data.aws_subnet.public_subnet2.id]
+  }
+  lifecycle {
+    ignore_changes = [
+      task_definition,
+      desired_count
+    ]
   }
 }
