@@ -1,3 +1,5 @@
+def branch45 = env.BRANCH_NAME
+
 pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
@@ -14,6 +16,11 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
+            stage('Pre') {
+            steps {
+                sh 'echo ${branch45}'
+            }
+        }
         stage('Git Checkout') {
             steps {
                 git credentialsId: 'git_token', 
