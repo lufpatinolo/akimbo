@@ -18,7 +18,7 @@ pipeline {
     stages {
             stage('Pre') {
             steps {
-                sh 'echo ${branch45}'
+                sh 'echo $branch45'
             }
         }
         stage('Git Checkout') {
