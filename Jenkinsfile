@@ -1,26 +1,16 @@
-def branch45 = env.BRANCH_NAME
-
 pipeline {
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
-        
-    }
-    
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')        
+    }    
     agent any
         triggers {
             githubPush()
         }
-    
     options {
         ansiColor('xterm')
     }
     stages {
-            stage('Pre') {
-            steps {
-                sh 'echo $branch45'
-            }
-        }
         stage('Git Checkout') {
             steps {
                 git credentialsId: 'git_token', 
