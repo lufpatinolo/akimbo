@@ -46,5 +46,13 @@ pipeline {
                 sh 'terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve'
             }
         }
+        stage('Terraform test') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                sh 'echo Develop job'
+            }
+        }
     }
 }
