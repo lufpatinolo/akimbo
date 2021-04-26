@@ -6,6 +6,9 @@ pipeline {
     }
     
     agent any
+        triggers {
+            githubPush()
+        }
     
     options {
         ansiColor('xterm')
