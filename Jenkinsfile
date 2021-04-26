@@ -48,10 +48,10 @@ pipeline {
         }
         stage('Terraform test') {
             when {
-                branch 'develop'
+                branch 'master'
             }
             steps {
-                sh 'echo Develop job'
+                sh 'echo Master job'
             }
         }
     }
