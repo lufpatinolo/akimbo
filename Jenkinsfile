@@ -20,7 +20,10 @@ pipeline {
                 url: 'https://github.com/lufpatinolo/akimbo.git'
             }
         }
-        stage('Terraform init') {
+        stage('Terraform init Prod') {
+            when {
+                branch 'master'
+            }
             steps {
                 sh '''terraform init \\
                     -input=false \\
@@ -30,7 +33,52 @@ pipeline {
                     -backend-config="encrypt=true"'''
             }
         }
-        stage('Terraform Plan') {
+        stage('Terraform init Stg') {
+            when {
+                branch 'staging'
+            }
+            steps {
+                sh '''terraform init \\
+                    -input=false \\
+                    -backend-config="bucket=develop-tf-states" \\
+                    -backend-config="key=infra.tfstate" \\
+                    -backend-config="region=us-east-1" \\
+                    -backend-config="encrypt=true"'''
+            }
+        }
+        stage('Terraform init Dev') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                sh '''terraform init \\
+                    -input=false \\
+                    -backend-config="bucket=develop-tf-states" \\
+                    -backend-config="key=infra.tfstate" \\
+                    -backend-config="region=us-east-1" \\
+                    -backend-config="encrypt=true"'''
+            }
+        }
+        stage('Terraform Plan Prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                sh 'terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan'
+            }
+        }
+        stage('Terraform Plan Stg') {
+            when {
+                branch 'staging'
+            }
+            steps {
+                sh 'terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan'
+            }
+        }
+        stage('Terraform Plan Dev') {
+            when {
+                branch 'develop'
+            }
             steps {
                 sh 'terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan'
             }
@@ -41,17 +89,28 @@ pipeline {
             }
         }
         
-        stage('Terraform Apply') {
-            steps {
-                sh 'terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve'
-            }
-        }
-        stage('Terraform test') {
+        stage('Terraform Apply Prod') {
             when {
                 branch 'master'
             }
             steps {
-                sh 'echo Master job'
+                sh 'terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve'
+            }
+        }
+        stage('Terraform Apply Stg') {
+            when {
+                branch 'staging'
+            }
+            steps {
+                sh 'terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve'
+            }
+        }
+        stage('Terraform Apply Dev') {
+            when {
+                branch 'develop'
+            }
+            steps {
+                sh 'terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve'
             }
         }
     }
