@@ -16,7 +16,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git credentialsId: '2af245d2-0e47-469e-8033-a866668db1ce', 
+                git credentialsId: 'git_token', 
                 url: 'https://github.com/lufpatinolo/akimbo.git'
             }
         }
