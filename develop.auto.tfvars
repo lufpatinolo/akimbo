@@ -7,4 +7,4 @@ tags                 = "VPC Develop"
 
 #EC2 Module
 ami_id        = "ami-0742b4e673072066f"
-instance_type = "t2.micro"
+instance_type = "t2.large"

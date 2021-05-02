@@ -1,0 +1,3 @@
+variable "arn_certificate" {
+  
+}

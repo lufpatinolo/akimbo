@@ -24,6 +24,7 @@ module "iam" {
 
 module "frontend" {
     source = "./src/modules/frontend"   
+    arn_certificate = module.route53.arn_certificate
 }
 
 module "ecs" {
@@ -34,4 +35,10 @@ module "ecs" {
     public_subnet2_id       = module.network.public_subnet2_id
     ecs_fargate_sg          = module.ec2.ecs_fargate_sg
     fbd_ecs_target_arn      = module.ec2.fbd_ecs_target_arn
+}
+
+module "route53" {
+    source = "./src/modules/route53"   
+    cloudfront_dns     = module.frontend.cloudfront_dns
+    cloudfront_zone_id = module.frontend.cloudfront_zone_id
 }
