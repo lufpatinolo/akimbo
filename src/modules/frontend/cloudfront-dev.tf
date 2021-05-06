@@ -17,7 +17,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Frontend Fundacion Bolivar Davivienda"
+  comment             = "Frontend Fundacion Bolivar Davivienda Dev"
   default_root_object = "index.html"
 
   aliases = ["site.fundacionbd.xyz"]
