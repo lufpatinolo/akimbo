@@ -2,10 +2,10 @@ locals {
   s3_origin_id_prod = "s3-fbd-Origin-prod"
 }
 resource "aws_cloudfront_origin_access_identity" "s3_fbd_origin_access_identity_prod" {
-  comment = "access-identity-fbd"
+  comment = "access-identity-fbd-prod"
 }
 
-resource "aws_cloudfront_distribution" "frontend_distribution-prod" {
+resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
   origin {
     domain_name = aws_s3_bucket.frontend-static-fbd-prod.bucket_regional_domain_name
     origin_id   = local.s3_origin_id_prod
@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution-prod" {
   comment             = "Frontend Fundacion Bolivar Davivienda Prod"
   default_root_object = "index.html"
 
-  #aliases = ["site.fundacionbd.xyz"]
+  aliases = ["www.fundacionbd.xyz"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -57,9 +57,9 @@ resource "aws_cloudfront_distribution" "frontend_distribution-prod" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
-    #acm_certificate_arn = var.arn_certificate
-    #ssl_support_method = "sni-only"
-    #minimum_protocol_version = "TLSv1.2_2019"
+    cloudfront_default_certificate = false
+    acm_certificate_arn = var.arn_certificate_prod
+    ssl_support_method = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2019"
   }
 }

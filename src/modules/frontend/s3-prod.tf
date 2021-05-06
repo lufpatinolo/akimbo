@@ -26,7 +26,7 @@ resource "aws_s3_bucket_policy" "s3-fbd-policy-prod" {
             "Sid": "1",
             "Effect": "Allow",
             "Principal": {
-                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E2EMT9YG4D2LYN"
+                "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E1VQLXNP2682NN"
             },
             "Action": "s3:GetObject",
             "Resource": "arn:aws:s3:::fundacion-bolivar-davivienda-prod/*"
