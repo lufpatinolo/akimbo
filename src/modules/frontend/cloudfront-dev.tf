@@ -7,7 +7,7 @@ resource "aws_cloudfront_origin_access_identity" "s3_fbd_origin_access_identity"
 
 resource "aws_cloudfront_distribution" "frontend_distribution" {
   origin {
-    domain_name = aws_s3_bucket.frontend-static-fbd.bucket_regional_domain_name
+    domain_name = aws_s3_bucket.frontend-static-fbd-dev.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
 
     s3_origin_config {

@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "frontend-static-fbd" {
-  bucket = "fundacion-bolivar-davivienda"
+resource "aws_s3_bucket" "frontend-static-fbd-dev" {
+  bucket = "fundacion-bolivar-davivienda-dev"
   acl    = "private"
   website {
     index_document = "index.html"
@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "frontend-static-fbd" {
 }
 
 resource "aws_s3_bucket_public_access_block" "s3-fbd-block" {
-    bucket                  = aws_s3_bucket.frontend-static-fbd.id
+    bucket                  = aws_s3_bucket.frontend-static-fbd-dev.id
     ignore_public_acls      = true
     block_public_policy     = true
     block_public_acls       = true
@@ -16,8 +16,8 @@ resource "aws_s3_bucket_public_access_block" "s3-fbd-block" {
     
 }
 
-resource "aws_s3_bucket_policy" "s3-fbd-policy" {
-  bucket = aws_s3_bucket.frontend-static-fbd.id
+resource "aws_s3_bucket_policy" "s3-fbd-policy-dev" {
+  bucket = aws_s3_bucket.frontend-static-fbd-dev.id
   policy = jsonencode({
     "Version": "2008-10-17",
     "Id": "PolicyForCloudFrontPrivateContent",
@@ -29,7 +29,7 @@ resource "aws_s3_bucket_policy" "s3-fbd-policy" {
                 "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E2EMT9YG4D2LYN"
             },
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::fundacion-bolivar-davivienda/*"
+            "Resource": "arn:aws:s3:::fundacion-bolivar-davivienda-dev/*"
         }
     ]
 })
