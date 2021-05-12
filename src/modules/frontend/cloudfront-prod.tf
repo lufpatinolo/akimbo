@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
   comment             = "Frontend Fundacion Bolivar Davivienda Prod"
   default_root_object = "index.html"
 
-  aliases = ["www.fundacionbd.xyz"]
+  aliases = ["www.fundacionbd.xyz", "fundacionbd.xyz"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -35,7 +35,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
       }
     }
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400

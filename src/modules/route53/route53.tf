@@ -42,9 +42,9 @@ resource "aws_acm_certificate_validation" "frontend_validation" {
   validation_record_fqdns = [for record in aws_route53_record.frontend_validation_record : record.fqdn]
 }
 ####
-resource "aws_route53_record" "www" {
+resource "aws_route53_record" "root" {
   zone_id = data.aws_route53_zone.fundacionbd.zone_id
-  name    = "www.${data.aws_route53_zone.fundacionbd.name}"
+  name    = data.aws_route53_zone.fundacionbd.name
   type    = "A"
 
   alias {
@@ -55,7 +55,8 @@ resource "aws_route53_record" "www" {
 }
 
 resource "aws_acm_certificate" "frontend_cert_prod" {
-  domain_name       = "www.${data.aws_route53_zone.fundacionbd.name}"
+  domain_name               = data.aws_route53_zone.fundacionbd.name
+  subject_alternative_names = [ "*.${data.aws_route53_zone.fundacionbd.name}" ]
   validation_method = "DNS"
 }
 
@@ -79,4 +80,12 @@ resource "aws_route53_record" "frontend_validation_record_prod" {
 resource "aws_acm_certificate_validation" "frontend_validation_prod" {
   certificate_arn         = aws_acm_certificate.frontend_cert_prod.arn
   validation_record_fqdns = [for record in aws_route53_record.frontend_validation_record_prod : record.fqdn]
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = data.aws_route53_zone.fundacionbd.zone_id
+  name    = "www.${data.aws_route53_zone.fundacionbd.name}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [var.cloudfront_dns_prod]
 }
