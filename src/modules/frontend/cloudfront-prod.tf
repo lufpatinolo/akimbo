@@ -36,9 +36,15 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
     }
 
     viewer_protocol_policy = "redirect-to-https"
+
+    lambda_function_association {
+      event_type   = "origin-response"
+      lambda_arn   = aws_lambda_function.lambda_edge.qualified_arn
+      include_body = false
+    }
     min_ttl                = 0
-    default_ttl            = 3600
-    max_ttl                = 86400
+    default_ttl            = 0
+    max_ttl                = 0
   }
 
   price_class = "PriceClass_All"
