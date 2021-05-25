@@ -21,7 +21,7 @@ resource "aws_iam_role" "lambda_edge_role" {
 EOF
 }
 
-resource "aws_lambda_function" "lambda_edge" {
+resource "aws_lambda_function" "lambda_edge_scHeaders" {
   description      = "Basic HTTP authentication module/function"
   role             = aws_iam_role.lambda_edge_role.arn
   runtime          = "nodejs12.x"

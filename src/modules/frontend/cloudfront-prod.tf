@@ -39,9 +39,16 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
 
     lambda_function_association {
       event_type   = "origin-response"
-      lambda_arn   = aws_lambda_function.lambda_edge.qualified_arn
+      lambda_arn   = aws_lambda_function.lambda_edge_scHeaders.qualified_arn
       include_body = false
     }
+
+    lambda_function_association {
+      event_type   = "origin-request"
+      lambda_arn   = aws_lambda_function.lambda_edge_index.qualified_arn
+      include_body = true
+    }
+
     min_ttl                = 0
     default_ttl            = 0
     max_ttl                = 0
