@@ -1,7 +1,7 @@
 # Fundación Bolivar Davivienda
 Repositorio Iac Terraform FBD
 
-- __akimbo__
+- __FBD_IAC__
    - [Jenkinsfile](Jenkinsfile)
    - [README.md](README.md)
    - [backend.tf](backend.tf)
