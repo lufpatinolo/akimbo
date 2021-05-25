@@ -11,7 +11,8 @@ resource "aws_iam_role" "lambda_edge_role" {
       "Principal": {
         "Service": [
           "lambda.amazonaws.com",
-          "edgelambda.amazonaws.com"
+          "edgelambda.amazonaws.com",
+          "cloudwatch.amazonaws.com"
         ]
       },
       "Action": "sts:AssumeRole"
