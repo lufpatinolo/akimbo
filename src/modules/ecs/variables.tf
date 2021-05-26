@@ -1,30 +1,3 @@
-variable "environment" {  
-}
-
-variable "vpc_cidr" {
-}
-
-variable "public_subnet1_cidr" {
-}
-
-variable "public_subnet2_cidr" {
-}
-
-variable "region" {
-    default = "us-east-1"
-}
-
-variable "tags" {
-}
-
-#EC2
-variable "ami_id" {
-}
-
-variable "instance_type" {
-}
-
-#ECS
 variable "ecs_task_role" {
     description = "The ARN of IAM role"
     type        = string
@@ -51,6 +24,12 @@ variable "public_subnet2_id" {
 
 variable "ecs_fargate_sg" {
   type = string
-  description = "ID of public subnet 2"
+  description = "ID of sg"
+  default = ""
+}
+
+variable "fbd_ecs_target_arn" {
+  type = string
+  description = "arn target ecs"
   default = ""
 }

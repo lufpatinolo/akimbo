@@ -28,6 +28,16 @@ module "frontend" {
     arn_certificate_prod = module.route53.arn_certificate_prod
 }
 
+module "ecs" {
+    source = "./src/modules/ecs"   
+    ecs_task_role           = module.iam.ecs_task_role
+    ecs_task_execution_role = module.iam.ecs_task_execution_role
+    public_subnet1_id       = module.network.public_subnet1_id
+    public_subnet2_id       = module.network.public_subnet2_id
+    ecs_fargate_sg          = module.ec2.ecs_fargate_sg
+    fbd_ecs_target_arn      = module.ec2.fbd_ecs_target_arn
+}
+
 module "route53" {
     source = "./src/modules/route53"   
     cloudfront_dns          = module.frontend.cloudfront_dns

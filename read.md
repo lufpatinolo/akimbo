@@ -1,7 +1,4 @@
-# Fundación Bolivar Davivienda
-Repositorio Iac Terraform FBD
-
-- __FBD_IAC__
+- __akimbo__
    - [Jenkinsfile](Jenkinsfile)
    - [README.md](README.md)
    - [backend.tf](backend.tf)
@@ -10,7 +7,7 @@ Repositorio Iac Terraform FBD
    - [main.tf](main.tf)
    - [outputs.tf](outputs.tf)
    - [provider.tf](provider.tf)
-   - [variables.tf](variables.tf)
+   - [read.md](read.md)
    - __src__
      - __modules__
        - __ec2__
@@ -43,5 +40,6 @@ Repositorio Iac Terraform FBD
          - [output.tf](src/modules/route53/output.tf)
          - [route53.tf](src/modules/route53/route53.tf)
          - [variables.tf](src/modules/route53/variables.tf)
+   - [tfplan](tfplan)
+   - [variables.tf](variables.tf)
 
-Para crear o modificar un recurso se debe ubicar el archivo .tf en la carpeta /src/modules/ y allí en la subcarpeta correspondiente, teniendo en cuenta de crear o modificar las variables del recurso dentro de cada carpeta y dentro de las variables globales que están en la raíz del repositorio, estas variables globales las utiliza el main.tf y la definición de estas variables irá en los .tfvars 
