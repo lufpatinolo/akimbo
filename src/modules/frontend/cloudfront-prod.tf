@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
   comment             = "Frontend Fundacion Bolivar Davivienda Prod"
   default_root_object = "index.html"
 
-  aliases = ["www.fundacionbd.xyz", "fundacionbd.xyz"]
+  aliases = ["www.fundacionbolivardavivienda.org", "fundacionbolivardavivienda.org"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -71,7 +71,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
 
   viewer_certificate {
     cloudfront_default_certificate = false
-    acm_certificate_arn = var.arn_certificate_prod
+    acm_certificate_arn = "arn:aws:acm:us-east-1:735065655809:certificate/65e454fe-70a6-4d66-aec7-cb0982d77182"
     ssl_support_method = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }

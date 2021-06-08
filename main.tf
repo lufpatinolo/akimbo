@@ -24,8 +24,7 @@ module "iam" {
 
 module "frontend" {
     source = "./src/modules/frontend"   
-    arn_certificate      = module.route53.arn_certificate
-    arn_certificate_prod = module.route53.arn_certificate_prod
+    arn_certificate_dev = module.route53.arn_certificate_dev
 }
 
 module "ecs" {

@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
   comment             = "Frontend Fundacion Bolivar Davivienda Dev"
   default_root_object = "index.html"
 
-  aliases = ["site.fundacionbd.xyz"]
+  aliases = ["www.fundacionbd.xyz", "fundacionbd.xyz"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -58,7 +58,7 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
 
   viewer_certificate {
     cloudfront_default_certificate = false
-    acm_certificate_arn = var.arn_certificate
+    acm_certificate_arn = var.arn_certificate_dev
     ssl_support_method = "sni-only"
     minimum_protocol_version = "TLSv1.2_2019"
   }
