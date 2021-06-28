@@ -45,3 +45,6 @@ Repositorio Iac Terraform FBD
          - [variables.tf](src/modules/route53/variables.tf)
 
 Para crear o modificar un recurso se debe ubicar el archivo .tf en la carpeta /src/modules/ y allí en la subcarpeta correspondiente, teniendo en cuenta de crear o modificar las variables del recurso dentro de cada carpeta y dentro de las variables globales que están en la raíz del repositorio, estas variables globales las utiliza el main.tf y la definición de estas variables irá en los .tfvars 
+
+Jenkins Akimbo:
+http://54.167.38.231:8080/
