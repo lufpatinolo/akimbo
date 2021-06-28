@@ -48,3 +48,5 @@ Para crear o modificar un recurso se debe ubicar el archivo .tf en la carpeta /s
 
 Jenkins Akimbo:
 http://34.200.93.230:8080/
+User: admin
+Pass: Akimbo*2021
