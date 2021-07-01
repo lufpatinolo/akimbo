@@ -1,6 +1,42 @@
-# Fundación Bolivar Davivienda
-Repositorio Iac Terraform FBD
+## Fundación Bolivar Davivienda
+# Repositorio de la Infraestructura como Código para FBD (Terraform), configurado para la Infraestructura de AWS.
 
+
+# Prerequisitos
+
+- Terraform 0.12.19 installed (installation guide: https://learn.hashicorp.com/terraform/getting-started/install.html)
+
+# Ejecutando el código
+
+- Inicializando los módulos y providers en Terraform
+
+terraform init \
+   -input=false \
+   -backend-config="bucket=develop-tf-states" \
+   -backend-config="key=infra.tfstate" \
+   -backend-config="region=us-east-1" \
+   -backend-config="encrypt=true"
+   
+   
+- Validar el código de la infraestructura
+
+terraform validate
+
+
+
+- Crear el plan en Terraform
+
+terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan
+
+
+
+- Aplicar el plan de la infraestructura
+
+terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve
+
+
+
+# Estructura código
 - __FBD_IAC__
    - [Jenkinsfile](Jenkinsfile)
    - [README.md](README.md)
