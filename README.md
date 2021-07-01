@@ -4,7 +4,7 @@
 
 ### Prerequisitos
 
-- Terraform 0.12.19 instalado (gúia de instalación: https://learn.hashicorp.com/terraform/getting-started/install.html)
+- Terraform 0.12 instalado (gúia de instalación: https://learn.hashicorp.com/terraform/getting-started/install.html)
 
 ### Ejecutando el código
 
