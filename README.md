@@ -34,7 +34,7 @@ terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out
 
 terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve
 
-
+# Diagrama estructura
 
 # Estructura código
 - __FBD_IAC__
@@ -80,9 +80,12 @@ terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -au
          - [route53.tf](src/modules/route53/route53.tf)
          - [variables.tf](src/modules/route53/variables.tf)
 
-Para crear o modificar un recurso se debe ubicar el archivo .tf en la carpeta /src/modules/ y allí en la subcarpeta correspondiente, teniendo en cuenta de crear o modificar las variables del recurso dentro de cada carpeta y dentro de las variables globales que están en la raíz del repositorio, estas variables globales las utiliza el main.tf y la definición de estas variables irá en los .tfvars 
+EDIT: Para crear o modificar un recurso se debe ubicar el archivo .tf en la carpeta /src/modules/ y allí en la subcarpeta correspondiente, teniendo en cuenta de crear o modificar las variables del recurso dentro de cada carpeta y dentro de las variables globales que están en la raíz del repositorio, estas variables globales las utiliza el main.tf y la definición de estas variables irá en los .tfvars 
 
-Jenkins Akimbo:
+
+Acceso a Jenkins
+
+Jenkins Entrega:
 http://34.200.93.230:8080/
 User: admin
 Pass: Akimbo*2021
