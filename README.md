@@ -18,6 +18,7 @@ terraform init \
    -backend-config="region=us-east-1" \
    -backend-config="encrypt=true"
 </code>
+
    
 - Validar el código de la infraestructura
 
