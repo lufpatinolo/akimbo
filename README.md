@@ -10,13 +10,14 @@
 
 - Inicializando los módulos y providers en Terraform
 
+<code>
 terraform init \
    -input=false \
    -backend-config="bucket=develop-tf-states" \
    -backend-config="key=infra.tfstate" \
    -backend-config="region=us-east-1" \
    -backend-config="encrypt=true"
-   
+</code>
    
 - Validar el código de la infraestructura
 
