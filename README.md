@@ -18,27 +18,28 @@ terraform init \
    -backend-config="region=us-east-1" \
    -backend-config="encrypt=true"
 </code>
-
+<br/>
    
 - Validar el código de la infraestructura
 
 <code>
 terraform validate
 </code>
-
+<br/>
 
 - Crear el plan en Terraform
 
 <code>
 terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan
 </code>
-
+<br/>
 
 - Aplicar el plan de la infraestructura
 
 <code>
 terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve
 </code>
+<br/>
 
 ### Diagrama estructura
 
