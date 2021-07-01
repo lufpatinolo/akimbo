@@ -17,22 +17,19 @@ terraform init \
    -backend-config="key=infra.tfstate" \
    -backend-config="region=us-east-1" \
    -backend-config="encrypt=true"
-</code>
-<br/>
+</code>  
    
 - Validar el código de la infraestructura
 
 <code>
 terraform validate
-</code>
-<br/>
+</code>  
 
 - Crear el plan en Terraform
 
 <code>
 terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan
-</code>
-<br/>
+</code>  
 
 - Aplicar el plan de la infraestructura
 
