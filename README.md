@@ -4,7 +4,7 @@
 
 # Prerequisitos
 
-- Terraform 0.12.19 installed (installation guide: https://learn.hashicorp.com/terraform/getting-started/install.html)
+- Terraform 0.12.19 instalado (gúia de instalación: https://learn.hashicorp.com/terraform/getting-started/install.html)
 
 # Ejecutando el código
 
@@ -83,7 +83,7 @@ terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -au
 EDIT: Para crear o modificar un recurso se debe ubicar el archivo .tf en la carpeta /src/modules/ y allí en la subcarpeta correspondiente, teniendo en cuenta de crear o modificar las variables del recurso dentro de cada carpeta y dentro de las variables globales que están en la raíz del repositorio, estas variables globales las utiliza el main.tf y la definición de estas variables irá en los .tfvars 
 
 
-Acceso a Jenkins
+# Jenkinks de entrega
 
 Jenkins Entrega:
 http://34.200.93.230:8080/
