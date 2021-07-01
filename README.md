@@ -22,19 +22,23 @@ terraform init \
    
 - Validar el código de la infraestructura
 
+<code>
 terraform validate
-
+</code>
 
 
 - Crear el plan en Terraform
 
+<code>
 terraform plan -input=false -compact-warnings -var-file=develop.auto.tfvars -out=tfplan
-
+</code>
 
 
 - Aplicar el plan de la infraestructura
 
+<code>
 terraform apply -input=false -compact-warnings -var-file=develop.auto.tfvars -auto-approve
+</code>
 
 ### Diagrama estructura
 
