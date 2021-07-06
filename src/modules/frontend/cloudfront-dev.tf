@@ -36,6 +36,13 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
     }
 
     viewer_protocol_policy = "allow-all"
+
+    lambda_function_association {
+      event_type   = "origin-request"
+      lambda_arn   = "arn:aws:lambda:us-east-1:735065655809:function:index-injection-dev:1"
+      include_body = true
+    }
+
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
@@ -54,6 +61,13 @@ resource "aws_cloudfront_distribution" "frontend_distribution" {
 
   tags = {
     Name = "FBD"
+  }
+
+  custom_error_response {
+    error_caching_min_ttl = 10
+    error_code            = 403
+    response_code         = 200
+    response_page_path    = "/index.html"
   }
 
   viewer_certificate {
