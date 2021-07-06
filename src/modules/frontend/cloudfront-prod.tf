@@ -69,6 +69,13 @@ resource "aws_cloudfront_distribution" "frontend_distribution_prod" {
     Name = "FBD"
   }
 
+  custom_error_response {
+    error_caching_min_ttl = 10
+    error_code            = 403
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
+
   viewer_certificate {
     cloudfront_default_certificate = false
     acm_certificate_arn = "arn:aws:acm:us-east-1:735065655809:certificate/65e454fe-70a6-4d66-aec7-cb0982d77182"
