@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git credentialsId: 'git_token', 
+                git credentialsId: 'deicide696/git_token',
                 url: 'https://github.com/lufpatinolo/akimbo.git'
             }
         }
